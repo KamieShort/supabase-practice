@@ -19,13 +19,13 @@ test("getMovies should return the list of movies", async (expect) => {
   expect.equal(resp.length, 13);
 });
 
-skip("getMoviesWithDirector returns movies with director", async (expect) => {
+test("getMoviesWithDirector returns movies with director", async (expect) => {
   const resp = await getMoviesWithDirector();
   expect.equal(resp.length, 13);
-  expect.notEqual(resp[0].directors, undefined);
+  expect.notEqual(resp[0].directors, getMovies);
 });
 
-skip("getDirectorNames returns the list of director names", async (expect) => {
+test("getDirectorNames returns the list of director names", async (expect) => {
   const resp = await getDirectorNames();
   expect.equal(resp.length, 9);
   expect.notEqual(resp[0].name, undefined);
