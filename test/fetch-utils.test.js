@@ -32,7 +32,7 @@ test("getDirectorNames returns the list of director names", async (expect) => {
   expect.equal(Object.keys(resp[0]).length, 1); // should ONLY return the name
 });
 
-skip("getMovieById returns a specific movie by ID", async (expect) => {
+test("getMovieById returns a specific movie by ID", async (expect) => {
   const resp = await getMovieById(2);
   expect.equal(resp.title, "Episode V - The Empire Strikes Back");
 });

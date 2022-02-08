@@ -20,19 +20,22 @@ export async function getMoviesWithDirector() {
   const resp = await client.from("movies").select("*");
   const directorName = await client.from("movies").select("director");
   return checkError(resp, directorName);
-  console.log(getMoviesWithDirector);
+  // console.log(getMoviesWithDirector);
 }
 
 export async function getDirectorNames() {
   // return the list of the director's names
-  const resp = await client.from("movies").select("*");
-  const name = await client.from("director").select("name");
-  return checkError(resp, name);
-  console.log(getMoviesWithDirector);
+  // const resp = await client.from("movies").select("*");
+  const name = await client.from("directors").select("name");
+  return checkError(name);
+  // console.log(getMoviesWithDirector);
 }
 
 export async function getMovieById(id) {
   // return the movie with the given id
+  const resp = await client.from("movies").select("*");
+  const byId = await client.from("movies").select("id");
+  return checkError(resp, byId);
 }
 
 export async function getMovieByTitle(title) {
