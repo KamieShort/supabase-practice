@@ -48,8 +48,10 @@ export async function getOldestMovie() {
   const resp = await client
     .from("movies")
     .select("*")
-    .eq("date", date)
+    .order("year")
+    .limit(1)
     .single();
+  return checkError(resp);
 }
 
 export async function getMoviesAfter(year) {
