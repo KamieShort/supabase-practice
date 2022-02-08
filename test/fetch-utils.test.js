@@ -37,12 +37,12 @@ test("getMovieById returns a specific movie by ID", async (expect) => {
   expect.equal(resp.title, "Episode V - The Empire Strikes Back");
 });
 
-skip("getMovieByTitle should match using title", async (expect) => {
+test("getMovieByTitle should match using title", async (expect) => {
   const resp = await getMovieByTitle("Episode V - The Empire Strikes Back");
   expect.equal(resp.id, 2);
 });
 
-skip("getOldestMovie returns Episode IV", async (expect) => {
+test("getOldestMovie returns Episode IV", async (expect) => {
   const resp = await getOldestMovie();
   expect.equal(resp.title, "Episode IV - A New Hope");
 });

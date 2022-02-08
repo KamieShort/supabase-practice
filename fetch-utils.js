@@ -17,33 +17,39 @@ export async function getMovies() {
 
 export async function getMoviesWithDirector() {
   // return the list of all the movies with their director
-  const resp = await client.from("movies").select("*");
-  const directorName = await client.from("movies").select("director");
-  return checkError(resp, directorName);
-  // console.log(getMoviesWithDirector);
+  const resp = await client.from("movies").select("*, directors(*)");
+  return checkError(resp);
 }
 
 export async function getDirectorNames() {
   // return the list of the director's names
-  // const resp = await client.from("movies").select("*");
-  const name = await client.from("directors").select("name");
-  return checkError(name);
-  // console.log(getMoviesWithDirector);
+  const resp = await client.from("directors").select("name");
+  return checkError(resp);
 }
 
 export async function getMovieById(id) {
   // return the movie with the given id
-  const resp = await client.from("movies").select("*");
-  const byId = await client.from("movies").select("id");
-  return checkError(resp, byId);
+  const resp = await client.from("movies").select("*").eq("id", id).single();
+  return checkError(resp);
 }
 
 export async function getMovieByTitle(title) {
   // return the movie with the given title
+  const resp = await client
+    .from("movies")
+    .select("*")
+    .eq("title", title)
+    .single();
+  return checkError(resp);
 }
 
 export async function getOldestMovie() {
   // return the oldest movie (assume the database is not sorted)
+  const resp = await client
+    .from("movies")
+    .select("*")
+    .eq("date", date)
+    .single();
 }
 
 export async function getMoviesAfter(year) {
